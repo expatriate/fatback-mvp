@@ -1,0 +1,118 @@
+.form-phone {
+
+    display: flex;
+    flex-direction: column;
+
+    &__wrapper {
+        width: 100%;
+        position: relative;
+
+        display: flex;
+        flex-direction: row;
+    }
+
+
+    label {
+        position: absolute;
+        left: 1rem;
+        font-size: 1.0625rem;
+        line-height: 1.4375rem;
+        color: $COLOR_GREY;
+        text-transform: capitalize;
+        bottom: 0.625rem;
+        pointer-events: none;
+        transition: all .25s ease;
+
+    }
+    input {
+        width: 100%;
+        min-height: 1.875rem;
+        padding-left: 1rem;
+
+        font-size: 1.0625rem;
+        line-height: 1.4375rem;
+        color: $COLOR_GREY_INPUT;
+
+        &.dirty {
+            & + label {
+                left: 0rem;
+                font-size: .8125rem;
+                font-weight: bold;
+                line-height: 1.125rem;
+                letter-spacing: -.024rem;
+                bottom: 1.875rem;
+                color: $COLOR_ADD_DARK;
+            }
+        }
+
+        &:focus {
+            & + label {
+                left: 0rem;
+                font-size: .8125rem;
+                font-weight: bold;
+                line-height: 1.125rem;
+                letter-spacing: -.024rem;
+                bottom: 1.875rem;
+                color: $COLOR_BTN_YELLOW;
+            }
+
+            border-color: $COLOR_BTN_YELLOW;
+        }
+    }
+
+
+    .countrycode {
+        width: 4.2rem;
+        margin-right: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $COLOR_GREY;
+        border-color: $COLOR_BTN_YELLOW;
+
+        &.inactive {
+            border-bottom: 1px solid $COLOR_FORM_BORDER;
+        }
+    }
+
+    &.dark {
+        label {
+            color: $COLOR_BTN_TEXT_DARK;
+        }
+        input {
+
+            color: $COLOR_BTN_TEXT_DARK;
+
+            &:focus {
+
+                & + label {
+                    color: $COLOR_BTN_TEXT_DARK;
+                }
+                border-color: $COLOR_BTN_BLUE;
+            }
+        }
+        .form-control {
+            border-color: $COLOR_GREY;
+        }
+
+        .countrycode {
+            color: $COLOR_BTN_TEXT_DARK;
+            border-color: $COLOR_BTN_BLUE;
+
+            &.inactive {
+                border-color: $COLOR_GREY;
+            }
+        }
+    }
+
+    & + & {
+        margin-top: 1.375rem;
+    }
+}
+
+
+.form-control {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid $COLOR_FORM_BORDER;
+}

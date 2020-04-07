@@ -1,0 +1,36 @@
+.start-page {
+    
+    &__wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        justify-content: space-around;
+    }
+
+    &__img-wrapper {
+        margin:0 auto;
+    }
+
+    &__img {
+        width: 17.5rem;
+        height: 17.5rem;
+    }
+
+    .subtitle {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+    }
+
+
+    .page__bottom {
+        padding: 0 1rem 1.6rem 1rem;
+
+        .button + .button {
+            margin-top: 1rem;
+        }
+    }
+}

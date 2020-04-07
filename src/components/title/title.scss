@@ -1,0 +1,9 @@
+.title {
+    font-weight: bold;
+    font-size: 1.4375rem;
+    line-height: 1.9375rem;
+
+    &.yellow {
+        color: $COLOR_BTN_YELLOW;
+    }
+}

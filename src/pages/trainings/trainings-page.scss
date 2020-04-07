@@ -1,0 +1,89 @@
+.trainings-page {
+    
+    width: 100%;
+
+    &__content {
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+
+        .subtitle {
+            color: $COLOR_GREY_TITLE;
+            font-weight: bold;
+            font-size: 1.4375rem;
+            line-height: 1.9375rem;
+            width: 100%;
+            text-align: center;
+
+            padding: 1.875rem;
+        }
+
+        .swiper-container {
+            width: 100%;
+        }
+    }
+
+    &__head {
+        background-color: $COLOR_ADD_DARK;
+
+        .title {
+            font-weight: 600;
+            font-size: 1.0625rem;
+            line-height: 1.4375rem;
+            width: 100%;
+            color: $COLOR_GREY_TITLE;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        .tabs {
+
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+
+
+            &__el {
+                flex: 1;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+
+                button {
+                    border: 0;
+                    background-color: transparent;
+                    padding: .4rem .975rem;
+                    border-bottom: 2px solid transparent;
+
+                    font-weight: 600;
+                    font-size: 0.875rem;
+                    line-height: 1.1875rem;
+                    color: $COLOR_GREY_TITLE;
+                }
+
+                &.active {
+
+                    button {
+                        font-weight: bold;
+                        color: $COLOR_BTN_YELLOW;
+                        border-bottom: 2px solid $COLOR_BTN_YELLOW;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.training-group {
+    width: 100%;
+    min-height: 10rem;
+    word-wrap: break-word;
+
+    &__swiper {
+        width: 50%;
+        height: 15rem;
+        background-color: #aabb99;
+    }
+}

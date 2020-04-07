@@ -1,0 +1,42 @@
+.four-in-row {
+
+    display: flex;
+    flex-direction: column;
+
+    .alert {
+        text-align: center;
+    }
+
+    &__wrapper {
+        display: flex;
+        flex-direction: row;
+    }
+
+    input {
+        font-size: 1.0625rem;
+        line-height: 1.4375rem;
+
+        transition: all .25s ease;
+
+        width: 2.5rem;
+        height: 3.125rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        color: $COLOR_WHITE;
+
+        border: none;
+        background-color: $COLOR_ADD_DARK;
+
+        &:focus {
+            color: $COLOR_BTN_YELLOW;
+        }
+    }
+
+    input + input {
+        margin-left: 1rem;
+    }
+}

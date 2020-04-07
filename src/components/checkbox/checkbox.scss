@@ -1,0 +1,49 @@
+.checkbox {
+
+    display: flex;
+    flex-direction: column;
+
+    &__wrapper {
+        display: flex;
+        flex-direction: row;
+    }
+
+
+    &__input {
+        display: none;
+    }
+
+    input:checked~.checkbox__mark {
+        border: 1px solid $COLOR_BTN_YELLOW;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32"><path fill="rgba(253,205,9,1)" d="M28.167,11.913L15.164,24.915c-0.39,0.391-0.902,0.588-1.415,0.588s-1.024-0.197-1.414-0.588l-6.501-6.501c-0.783-0.781-0.783-2.046,0-2.829c0.782-0.782,2.046-0.782,2.828,0l5.087,5.087L25.338,9.084c0.783-0.782,2.047-0.782,2.829,0S28.949,11.131,28.167,11.913z"/></svg>')
+    }
+
+    input~.checkbox__mark {
+        border: 1px solid $COLOR_RULES_TEXT_DARK;
+        border-radius: 4px;
+    }
+
+    &__mark {
+        width: 1.4rem;
+        height: 1.4rem;
+        display: block;
+        transition: all .3s ease;
+    }
+
+    &__label {
+        flex: 1;
+        margin-left: .375rem;
+        font-size: .75rem;
+        line-height: 1rem;
+        color: $COLOR_RULES_TEXT_DARK;
+
+        a {
+            text-decoration: none;
+            color: $COLOR_BTN_YELLOW;
+        }
+    }
+
+    .alert {
+        margin-left: .375rem;
+    }
+}

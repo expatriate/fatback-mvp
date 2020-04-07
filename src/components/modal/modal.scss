@@ -1,0 +1,122 @@
+.modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    display: none;
+
+    &__content {
+        background-color: $COLOR_WHITE;
+        border-radius: 1.5625rem 1.5625rem 0 0;
+        height: calc(100% - 5rem);
+        margin-top: 5rem;
+        -webkit-overflow-scrolling:touch;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &.opened {
+        display: block;
+        background-color: rgba(0,0,0,.5);
+    }
+}
+
+.modal-top {
+
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+
+    &__title {
+        flex: 1;
+        font-weight: bold;
+        font-size: 1.125rem;
+        line-height: 1.5625rem;
+        color: $COLOR_ADD_DARK;
+    }
+
+    &__icon {
+        width: 1.1rem;
+        height: 1.1rem;
+    }
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.modal-center-list {
+
+    flex: 1;
+
+    &__el {
+        font-size: 1.0625rem;
+        line-height: 1.4375rem;
+        padding: 0 1rem;
+        display: flex;
+        flex-direction:row;
+        justify-content: center;
+        align-items: center;
+        transition: all .25s ease;
+
+        span {
+            display: block;
+            flex: 1;
+            padding: .5rem 0;
+            border-top: 1px solid $COLOR_LIST_BORDER;
+        }
+
+        img {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        &.selected {
+            transition: all .25s ease;
+            background-color: $COLOR_BTN_YELLOW;
+
+            span {
+                border-color: transparent;
+            }
+        }
+
+        &:first-child {
+            span {
+                border-top: none;
+            }
+        }
+    }
+
+    &__el + &__el.selected {
+        span {
+            border-color: transparent;
+        }
+    }
+
+    &__el.selected + &__el {
+        span {
+            border-color: transparent;
+        }
+    }
+}
+
+.modal-bottom {
+    &__links {
+        display: flex;
+        flex-direction: row;
+        padding: 1rem;
+
+        .button {
+            width: 50%;
+        }
+
+        .button + .button {
+            margin-left: 1rem;
+        }
+    }
+}

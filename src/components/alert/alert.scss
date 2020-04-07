@@ -1,0 +1,23 @@
+.alert {
+    &.alert-danger {
+        color: $COLOR_ERROR_RED;
+        font-size: .625rem;
+        line-height: .875rem;
+        margin-top: .275rem;
+        padding: 0;
+        text-align: left;
+    }
+
+    &.alert-warning {
+        color: $COLOR_BTN_YELLOW;
+        font-size: .625rem;
+        line-height: .875rem;
+        margin-top: .275rem;
+        padding: 0;
+        text-align: left;
+    }
+
+    &.alert-centered {
+        text-align: center;
+    }
+}

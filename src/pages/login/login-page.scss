@@ -1,0 +1,60 @@
+.login-page {
+
+    &__wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        justify-content: space-around;
+    }
+
+    &__img-wrapper {
+        margin: 0 auto;
+    }
+
+    &__forget-wrapper {
+        text-align: center;
+        margin: 1rem 0;
+    }
+
+    &__links {
+        margin-top: 1.875rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        span {
+            color: $COLOR_ADD_DARK;
+            font-size: .75rem;
+            line-height: 1rem;
+        }
+    }
+
+    &__img {
+        width: 10.3rem;
+        height: 10.3rem;
+    }
+
+    .form-phone + .form-group {
+        margin-top: 1.375rem;
+    }
+
+    .subtitle {
+        margin: 1.475rem 0;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+
+        color: $COLOR_GREY;
+        font-weight: bold;
+        font-size: 1.4375rem;
+        line-height: 1.9375rem;
+    }
+
+    .page__bottom {
+        padding: 1rem 1rem 1.6rem 1rem;
+    }
+}
