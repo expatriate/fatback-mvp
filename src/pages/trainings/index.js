@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux';
 
 import Swiper from 'react-id-swiper';
 
+import TrainingCard from '../../components/training-card';
+
 import Navigation from '../../components/navigation';
 
 class TrainingsPage extends Component {
@@ -15,25 +17,36 @@ class TrainingsPage extends Component {
         };
     }
 
-    renderTrainingGroup(groupId) {
+    renderTrainingGroup(group) {
 
         const { items } = this.props.trainings;
+        const { id, icon, title } = group;
 
-        console.log()
+        const groupTrainings = items.data.filter(el => (el.trainings_group_id === id));
 
-        const groupTrainings = items.data.filter(el => (el.trainings_group_id === groupId));
-
-        return(<Swiper
-            slidesPerView='auto'
-            >
-            {
-                groupTrainings.map((el, index) => {
-                    return(<div key={`td_${index}`} className="training-group__swiper">
-                        {el.title}
-                    </div>)
-                })
-            }
-        </Swiper>)
+        if (groupTrainings && groupTrainings.length > 0) {
+            return(
+                <React.Fragment>
+                    <div className="trainings-group">
+                        {
+                            icon && <img src={icon} className="trainings-group__icon" alt="training group image" />
+                        }
+                        <div className="trainings-group__title">
+                            { title }
+                        </div>
+                    </div>
+                    <Swiper slidesPerView='auto'>
+                        {
+                            groupTrainings.map((el, index) => {
+                                return(<TrainingCard key={`td_${index}`} training={el} />);
+                            })
+                        }
+                    </Swiper>
+                </React.Fragment>
+            )
+        } else {
+            return null
+        }
     }
 
     render() {
@@ -74,25 +87,11 @@ class TrainingsPage extends Component {
                     }
                     {
                         tab === 'add' &&
-                        <React.Fragment>
-                            <h2 className="subtitle">
-                                Ваши&nbsp;тренировки&nbsp;на сегодня
-                            </h2>
-
-                            {
-                                groups.data.map(group => {
-                                    return(<div key={`tg_${group.id}`}>
-                                        <div>
-                                            <div>
-                                                {group.icon}
-                                            </div>
-                                            <div>{group.title}</div>
-                                        </div>
-                                        { this.renderTrainingGroup(group.id) }
-                                    </div>)
-                                })
-                            }
-                        </React.Fragment>
+                        groups.data.map(group => {
+                            return(<div key={`tg_${group.id}`}>
+                                { this.renderTrainingGroup(group) }
+                            </div>)
+                        })
                     }
                 </div>
             </div>

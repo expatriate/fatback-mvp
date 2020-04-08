@@ -1,0 +1,45 @@
+.training-page {
+
+    background-color: $COLOR_WHITE;
+
+    width: 100%;
+
+    &__content-blue {
+        padding-top: 4.25rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        border-radius: 0 0 1rem 1rem;
+        background-color: $COLOR_BG_BLUE
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        background-color: $COLOR_WHITE;
+        margin-bottom: 6.375rem;
+    }
+
+    &__dtitle {
+        width: 100%;
+        font-weight: bold;
+        font-size: 1.125rem;
+        line-height: 1.5625rem;
+        text-align: center;
+        color: $COLOR_GREY_TITLE;
+        margin: .875rem 0 .625rem 0;
+
+        &.blue {
+            color: $COLOR_BTN_TEXT_DARK
+        }
+    }
+
+    &__description {
+        font-weight: normal;
+        font-size: .9375rem;
+        line-height: 1.25rem;
+        color: $COLOR_GREY_TEXT;
+        margin: 0 1rem 1.75rem 1rem;
+        width: auto;
+    }
+}

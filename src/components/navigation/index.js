@@ -5,12 +5,15 @@ import leftarrow from '../../assets/svg/left-arrow.svg';
 
 function Navigation(props) {
 
+    const { title, backbutton } = props;
+
     return (
         <div className="navigation">
-        { props.backbutton && 
+        { backbutton && 
             <div className="navigation__back" onClick={() => {history.goBack()}}>
                 <img src={leftarrow} />
-                <span>Назад</span>
+                { title && <span>{ title }</span> }
+                { !title && <span>Назад</span> }
             </div>}
         </div>
     );

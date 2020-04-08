@@ -3,8 +3,12 @@ import { trainingsConstants } from '../constants';
 const initialState = {
     items: [],
     groups: [],
+    training: {},
+    exercises: {},
     loading: false,
     groups_loading: false,
+    training_loading: false,
+    exercises_loading: false,
 }
 
 export function trainings(state = initialState, action) {
@@ -43,6 +47,41 @@ export function trainings(state = initialState, action) {
                 groups: {data: []},
                 groups_loading: false,
             }
+        case trainingsConstants.GET_TRAINING_REQUEST:
+            return {
+                ...state,
+                training_loading: true,
+            }
+        case trainingsConstants.GET_TRAINING_SUCCESS:
+            return {
+                ...state,
+                training: action.data,
+                training_loading: false,
+            }
+        case trainingsConstants.GET_TRAINING_FAILURE:
+            return {
+                ...state,
+                training: {},
+                training_loading: false,
+            }
+        case trainingsConstants.GET_TRAINING_EXERCISES_REQUEST:
+            return {
+                ...state,
+                exercises_loading: true,
+            }
+        case trainingsConstants.GET_TRAINING_EXERCISES_SUCCESS:
+            return {
+                ...state,
+                exercises: action.data,
+                exercises_loading: false,
+            }
+        case trainingsConstants.GET_TRAINING_EXERCISES_FAILURE:
+            return {
+                ...state,
+                exercises: {},
+                exercises_loading: false,
+            }
+            
         default:
             return state
     }

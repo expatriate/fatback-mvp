@@ -1,0 +1,90 @@
+.exercise-line {
+
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    
+    margin: 0 1rem;
+    padding: 1rem 0;
+
+    &__number {
+        font-weight: 800;
+        font-size: 1.0625rem;
+        line-height: 1.4375rem;
+        color: $COLOR_BLUE_DESCRIPTION;
+        margin-right: 0.475rem;
+    }
+
+    &__image {
+        width: 5.625rem;
+        height: 5.625rem;
+        border-radius: 4px;
+        background-color: $COLOR_BLUE_DESCRIPTION;
+
+        img {
+            width: 5.625rem;
+            height: 5.625rem;
+            border-radius: 4px;
+        }
+
+        margin-right: 0.75rem;
+    }
+
+    &__description {
+        font-weight: normal;
+        font-size: .9375rem;
+        height: 4rem;
+        line-height: 1.25rem;
+        color: $COLOR_BTN_TEXT_DARK;
+    }
+
+    &__content {
+
+    }
+
+    &__info {
+        height: 1.625rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        img {
+            width: 1.1875rem;
+            height: 1.625rem;
+            margin-right: .4365rem;
+        }
+    }
+
+    &__label {
+        font-size: .75rem;
+        line-height: .875rem;
+        max-width: 6rem;
+        color: $COLOR_BLUE_DESCRIPTION;
+    }
+
+    &__work-time {
+        font-weight: bold;
+        font-size: 1.25rem;
+        line-height: 1.6875rem;
+        color: $COLOR_BLUE_DESCRIPTION;
+    }
+
+    &__relax-time {
+        font-weight: bold;
+        font-size: 1.25rem;
+        line-height: 1.6875rem;
+        color: $COLOR_FOOTER_MENU_ACTIVE;
+    }
+
+    &__label-time {
+        color: $COLOR_BLUE_DESCRIPTION;
+        font-weight: normal;
+        font-size: .75rem;
+        line-height: 1rem;
+        margin: .4rem 0 0 .2rem
+    }
+
+    & + & {
+        border-top: 1px solid rgba(224, 224, 224, .5);
+    }
+}

@@ -8,6 +8,8 @@ const config = {
 export const trainingsService = {
     getTrainings,
     getTrainingGroups,
+    getTraining,
+    getTrainingExercises
 };
 
 function getTrainings() {
@@ -28,6 +30,24 @@ function getTrainingGroups() {
     };
 
     return fetch(`${config.apiUrl}/trainings-groups/`, requestOptions).then(handleResponse);
+}
+
+function getTraining(trainingId) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(`${config.apiUrl}/trainings/${trainingId}`, requestOptions).then(handleResponse);
+}
+
+function getTrainingExercises(trainingId) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(`${config.apiUrl}/training-exercises/`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

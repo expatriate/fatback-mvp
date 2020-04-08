@@ -1,0 +1,114 @@
+.video-block {
+    width: auto;
+    min-height: 70vh;
+    position: relative;
+    border-radius: 4px;
+    background-color: $COLOR_BLUE_DESCRIPTION;
+    margin: 1rem;
+
+    &__layout {
+        background-color: rgba(0,0,0,.2);
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__title {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 1.4375rem;
+        line-height: 1.9375rem;
+        color: $COLOR_GREY_TEXT;
+        padding: 0.8125rem 0.8125rem 0 0.8125rem;
+    }
+
+    &__info {
+        display: flex;
+        margin-top: .875rem;
+        flex-direction: row;
+        margin-bottom: 1.75rem;
+    }
+
+    &__info-el {
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 1.5625rem;
+            height: 1.5625rem;
+            margin-right: .5rem;
+        }
+
+        span {
+            font-weight: normal;
+            font-size: .9375rem;
+            line-height: 1.25rem;
+            color: $COLOR_GREY;
+
+            &.bold {
+                font-weight: 600;
+            }
+        }
+
+        &.column {
+            flex-direction: column;
+        }
+    }
+
+    &__level {
+
+        display: flex;
+        flex-direction: row;
+
+        span {
+            margin-top: .375rem;
+            display: block;
+            width: .625rem;
+            height: .625rem;
+            border-radius: 50%;
+            background-color: transparent;
+            border: 1px solid $COLOR_BTN_YELLOW;
+
+            &:not(:last-child) {
+                margin-right: .625rem;
+            }
+        }
+    }
+
+    &__level1 {
+        span {
+            &:nth-child(1) {
+                background-color: $COLOR_BTN_YELLOW;
+            }
+        }
+    }
+    &__level2 {
+        span {
+            &:nth-child(1) {
+                background-color: $COLOR_BTN_YELLOW;
+            }
+            &:nth-child(2) {
+                background-color: $COLOR_BTN_YELLOW;
+            }
+        }
+    }
+    &__level3 {
+        span {
+            &:nth-child(1) {
+                background-color: $COLOR_BTN_YELLOW;
+            }
+            &:nth-child(2) {
+                background-color: $COLOR_BTN_YELLOW;
+            }
+            &:nth-child(3) {
+                background-color: $COLOR_BTN_YELLOW;
+            }
+        }
+    }
+}

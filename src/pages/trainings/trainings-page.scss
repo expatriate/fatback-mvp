@@ -2,6 +2,8 @@
     
     width: 100%;
 
+    margin-bottom: 6.375rem;
+
     &__content {
         width: 100%;
 
@@ -76,14 +78,25 @@
 }
 
 
-.training-group {
+.trainings-group {
     width: 100%;
-    min-height: 10rem;
-    word-wrap: break-word;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 1.875rem;
+    margin: 1.875rem 0 1.25rem 0;
 
-    &__swiper {
-        width: 50%;
-        height: 15rem;
-        background-color: #aabb99;
+    &__icon {
+        width: 1.875rem;
+        height: 1.875rem;
+        margin-left: 1rem;
+    }
+
+    &__title {
+        margin-left: 1rem;
+        font-weight: bold;
+        font-size: 1.125rem;
+        line-height: 1.5625rem;
+        color: $COLOR_GREY_TITLE;
     }
 }

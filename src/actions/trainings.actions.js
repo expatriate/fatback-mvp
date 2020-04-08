@@ -5,7 +5,9 @@ import { history } from '../helpers/history';
 
 export const trainingsActions = {
     getTrainings,
-    getTrainingGroups
+    getTrainingGroups,
+    getTraining,
+    getTrainingExercises
 };
 
 function getTrainings() {
@@ -56,4 +58,54 @@ function getTrainingGroups() {
     function request() { return { type: trainingsConstants.GET_TRAININGGROUPS_REQUEST } }
     function success(groups) { return { type: trainingsConstants.GET_TRAININGGROUPS_SUCCESS, data: groups } }
     function failure(error) { return { type: trainingsConstants.GET_TRAININGGROUPS_FAILURE, error } }
+}
+
+function getTraining(trainingId) {
+    return dispatch => {
+        dispatch(request());
+
+        trainingsService.getTraining(trainingId)
+            .then(
+                data => {
+                    dispatch(success(data));
+                },
+                error => {
+                    if (error.errors) {
+                        dispatch(failure(JSON.stringify(error)));
+                        dispatch(alertActions.error(JSON.stringify(error)));
+                    } else {
+                        dispatch(success([]));
+                    }
+                }
+            );
+    };
+
+    function request() { return { type: trainingsConstants.GET_TRAINING_REQUEST } }
+    function success(training) { return { type: trainingsConstants.GET_TRAINING_SUCCESS, data: training } }
+    function failure(error) { return { type: trainingsConstants.GET_TRAINING_FAILURE, error } }
+}
+
+function getTrainingExercises(trainingId) {
+    return dispatch => {
+        dispatch(request());
+
+        trainingsService.getTrainingExercises(trainingId)
+            .then(
+                data => {
+                    dispatch(success(data));
+                },
+                error => {
+                    if (error.errors) {
+                        dispatch(failure(JSON.stringify(error)));
+                        dispatch(alertActions.error(JSON.stringify(error)));
+                    } else {
+                        dispatch(success([]));
+                    }
+                }
+            );
+    };
+
+    function request() { return { type: trainingsConstants.GET_TRAINING_EXERCISES_REQUEST } }
+    function success(exercises) { return { type: trainingsConstants.GET_TRAINING_EXERCISES_SUCCESS, data: exercises } }
+    function failure(error) { return { type: trainingsConstants.GET_TRAINING_EXERCISES_FAILURE, error } }
 }

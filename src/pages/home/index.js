@@ -1,10 +1,9 @@
 import React from 'react';
-import { Router, Route, Switch, Redirect, NavLink} from 'react-router-dom';
+import { Router, Route, Switch, Redirect, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { trainingsActions } from '../../actions';
 import { newsActions } from '../../actions';
-
 
 import TrainingsPage from '../../pages/trainings';
 import TrainingPage from '../../pages/training';
