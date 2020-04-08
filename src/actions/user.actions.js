@@ -32,7 +32,7 @@ function login(code, phone, password) {
                 user => { 
                     localStorage.setItem('user', JSON.stringify(user));
                     dispatch(success(user));
-                    history.push('/home');
+                    history.push('/trainings');
                 },
                 (error, data) => {
                     dispatch(failure(JSON.stringify(error)));

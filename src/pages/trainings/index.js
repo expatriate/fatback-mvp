@@ -15,10 +15,31 @@ class TrainingsPage extends Component {
         };
     }
 
+    renderTrainingGroup(groupId) {
+
+        const { items } = this.props.trainings;
+
+        console.log()
+
+        const groupTrainings = items.data.filter(el => (el.trainings_group_id === groupId));
+
+        return(<Swiper
+            slidesPerView='auto'
+            >
+            {
+                groupTrainings.map((el, index) => {
+                    return(<div key={`td_${index}`} className="training-group__swiper">
+                        {el.title}
+                    </div>)
+                })
+            }
+        </Swiper>)
+    }
+
     render() {
 
         const { tab } = this.state;
-        let { trainings } = this.props;
+        const { items, groups } = this.props.trainings;
 
         return (
             <div className="page trainings-page">
@@ -47,11 +68,7 @@ class TrainingsPage extends Component {
                                 Ваши&nbsp;тренировки&nbsp;на сегодня
                             </h2>
                             {
-                                trainings && trainings.items && trainings.items.data && trainings.items.data.map((el, index) => {
-                                    return(<div key={`td_${index}`} className="training-group">
-                                            {JSON.stringify(el)}
-                                        </div>)
-                                })
+                                
                             }
                         </React.Fragment>
                     }
@@ -61,56 +78,19 @@ class TrainingsPage extends Component {
                             <h2 className="subtitle">
                                 Ваши&nbsp;тренировки&nbsp;на сегодня
                             </h2>
+
                             {
-                                trainings && trainings.items && trainings.items.data &&
-                                <Swiper
-                                    spaceBetween={16}
-                                    slidesOffsetBefore={16}
-                                    slidesOffsetAfter={16}
-                                    slidesPerView='auto'
-                                    >
-                                    {
-                                        trainings.items.data.map((el, index) => {
-                                            return(<div key={`td_${index}`} className="training-group__swiper">
-                                                    {el.title}
-                                                </div>)
-                                        })
-                                    }
-                                </Swiper>
-                            }
-                            {
-                                trainings && trainings.items && trainings.items.data &&
-                                <Swiper
-                                    spaceBetween={16}
-                                    slidesOffsetBefore={16}
-                                    slidesOffsetAfter={16}
-                                    slidesPerView='auto'
-                                    >
-                                    {
-                                        trainings.items.data.map((el, index) => {
-                                            return(<div key={`td_${index}`} className="training-group__swiper">
-                                                    {el.title}
-                                                </div>)
-                                        })
-                                    }
-                                </Swiper>
-                            }
-                            {
-                                trainings && trainings.items && trainings.items.data &&
-                                <Swiper
-                                    spaceBetween={16}
-                                    slidesOffsetBefore={16}
-                                    slidesOffsetAfter={16}
-                                    slidesPerView='auto'
-                                    >
-                                    {
-                                        trainings.items.data.map((el, index) => {
-                                            return(<div key={`td_${index}`} className="training-group__swiper">
-                                                    {el.title}
-                                                </div>)
-                                        })
-                                    }
-                                </Swiper>
+                                groups.data.map(group => {
+                                    return(<div key={`tg_${group.id}`}>
+                                        <div>
+                                            <div>
+                                                {group.icon}
+                                            </div>
+                                            <div>{group.title}</div>
+                                        </div>
+                                        { this.renderTrainingGroup(group.id) }
+                                    </div>)
+                                })
                             }
                         </React.Fragment>
                     }

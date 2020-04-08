@@ -3,9 +3,12 @@ import { Router, Route, Switch, Redirect, NavLink} from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { trainingsActions } from '../../actions';
+import { newsActions } from '../../actions';
+
 
 import TrainingsPage from '../../pages/trainings';
-import { NewsPage } from '../../pages/news';
+import TrainingPage from '../../pages/training';
+import NewsPage from '../../pages/news';
 import { MenuPage } from '../../pages/menu';
 
 import menuIcon from '../../assets/svg/menu.svg';
@@ -29,6 +32,7 @@ class HomePage extends React.Component {
 
         this.props.getTrainings();
         this.props.getTrainingGroups();
+        this.props.getNews();
 
         let tab = '';
 
@@ -74,16 +78,17 @@ class HomePage extends React.Component {
             <div className="page home-page">
                 <div className="content">
                     <Switch>
-                        <Route path="/home/trainings" component={TrainingsPage} />
-                        <Route path="/home/news" component={NewsPage} />
-                        <Route path="/home/menu" component={MenuPage} />
+                        <Route path="/trainings" exact component={TrainingsPage} />
+                        <Route path="/news" component={NewsPage} />
+                        <Route path="/menu" component={MenuPage} />
+                        <Route path="/trainings/:id" component={TrainingPage} />
                     </Switch>
                 </div>
                 <div className="footer">
                     <div className="footer-tabs">
                         <div className="footer-tabs__el">
                             <NavLink
-                                to="/home/menu"
+                                to="/menu"
                                 activeClassName="active">
                                 <button>
                                     {
@@ -98,7 +103,7 @@ class HomePage extends React.Component {
                         </div>
                         <div className="footer-tabs__el">
                             <NavLink
-                                to="/home/trainings"
+                                to="/trainings"
                                 activeClassName="active">
                                 <button>
                                     {
@@ -113,7 +118,7 @@ class HomePage extends React.Component {
                         </div>
                         <div className="footer-tabs__el">   
                             <NavLink
-                                to="/home/news"
+                                to="/news"
                                 activeClassName="active">
                                 <button>
                                     {
@@ -139,7 +144,8 @@ function mapState(state) {
 
 const actionCreators = {
     getTrainings: trainingsActions.getTrainings,
-    getTrainingGroups: trainingsActions.getTrainingGroups
+    getTrainingGroups: trainingsActions.getTrainingGroups,
+    getNews: newsActions.getNews
 }
 
 const connectedHomePage = connect(mapState, actionCreators)(HomePage);

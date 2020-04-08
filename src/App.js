@@ -39,7 +39,7 @@ class App extends React.Component {
                         <Route path="/restore-password" exact component={RestorePasswordPage} />
                         <Route path="/welcome" exact component={WelcomePage} />
                         <Route path="/test" exact component={TestPage} />
-                        <PrivateRoute path="/home" component={HomePage} />
+                        <PrivateRoute component={HomePage} />
                         <Redirect from="*" to="/login" />
                     </Switch>
                 </Router>
