@@ -1,0 +1,126 @@
+.news-item {
+    border-radius: 1.5625rem;
+    background-color: $COLOR_ADD_DARK_05;
+
+    padding: .8125rem;
+
+    &__title {
+        font-weight: bold;
+        font-size: 1.4375rem;
+        line-height: 1.9375rem;
+        color: $COLOR_GREY_TITLE;
+    }
+
+    &__content {
+        max-height: 17.985rem;
+        overflow: hidden;
+
+        &.opened {
+            max-height: none;
+        }
+
+        &.shadow {
+            position: relative;
+            &:after {
+                content: '';
+                position: absolute;
+                bottom: 0px;
+                left: 0;
+                width: 100%;
+                height: 4rem;
+                background: linear-gradient(transparent, $COLOR_ADD_DARK_00, $COLOR_ADD_DARK_05);
+            }
+        }
+    }
+
+    &__button {
+        display: flex;
+        padding: .5rem 0 .1875rem 0;
+        justify-content: flex-end;
+        background-color: $COLOR_ADD_DARK_05;
+        top: -1px;
+        position: relative;
+
+        button {
+            color: $COLOR_BLUE_DESCRIPTION;
+            font-weight: 600;
+            font-size: .875rem;
+            line-height: 1.1875rem;
+            text-transform: uppercase;
+            padding: 0;
+            border: 0;
+            background-color: transparent;
+        }
+    }
+
+    & + & {
+        margin-top: 1.25rem;
+    }
+}
+
+.news-item-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: .8125rem;
+
+    &__image {
+        width: 2.8125rem;
+        height: 2.8125rem;
+        margin-right: 1.4375rem;
+        border-radius: 50%;
+        border: 1px solid $COLOR_BTN_YELLOW;
+    }
+
+    &__info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    span {
+        &:first-child {
+            font-style: normal;
+            font-weight: 600;
+            font-size: .875rem;
+            line-height: 1.1875rem;
+            color: $COLOR_GREY_TITLE;
+            margin-bottom: .375rem;
+            display: block;
+        }
+
+        &:last-child {
+            font-weight: normal;
+            font-size: .75rem;
+            line-height: 1rem;
+            color: $COLOR_BLUE_DESCRIPTION;
+        }
+    }
+}
+
+.news-item-part {
+    margin-top: .9375rem;
+
+    &__paragraph {
+        font-weight: normal;
+        font-size: .9375rem;
+        line-height: 1.25rem;
+        color: $COLOR_GREY_TITLE;
+    }
+
+    &__subtitle {
+        font-weight: normal;
+        font-size: 1.125rem;
+        line-height: 1.25rem;
+        color: $COLOR_GREY_TITLE;
+    }
+
+    &__image {
+        width: 100%;
+
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+}

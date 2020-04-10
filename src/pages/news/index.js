@@ -5,12 +5,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import Navigation from '../../components/navigation';
+import NewsItem from '../../components/news-item';
 
 class NewsPage extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            opened: []
         };
     }
 
@@ -20,15 +22,14 @@ class NewsPage extends React.Component {
 
         return (
             <div className="page news-page">
-                <Navigation
-                    backbutton
-                    />
                 <div className="news-page__content">
-                    <h1 className="title yellow">
-                        NewsPage
+                    <h1 className="title">
+                        Лента
                     </h1>
                     {
-                        JSON.stringify(items)
+                        items && items.data && items.data.map(news => {
+                            return(<NewsItem key={`ni_${news.id}`} item={news} />);
+                        })
                     }
                 </div>
             </div>
