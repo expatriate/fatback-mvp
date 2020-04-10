@@ -2,12 +2,15 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import { Redirect } from 'react-router-dom';
+
 import { trainingsActions } from '../../actions';
 
 import relaxIcon from '../../assets/svg/relax-time.svg';
 import timeIcon from '../../assets/svg/time.svg';
 import dumbbellIcon from '../../assets/svg/dumbbell.svg';
 
+import Button from '../../components/button';
 import Navigation from '../../components/navigation';
 
 class TrainingPage extends Component {
@@ -21,6 +24,11 @@ class TrainingPage extends Component {
     componentWillMount() {
         const { id } = this.props.match.params;
         this.props.getTraining(id);
+    }
+
+    handleEnd() {
+        const { id } = this.props.match.params;
+        this.props.history.push(`/trainings/${id}/vote`);
     }
 
     renderExercise(exercise, index) {
@@ -121,6 +129,9 @@ class TrainingPage extends Component {
                                     return this.renderExercise(el, index)
                                 })
                             }
+                            <div className="training-page__buttons">
+                                <Button click={() => this.handleEnd()} text="Закончить тренировку" styles={'yellow-block big filled centered'}/>
+                            </div>
                         </div>
                     </React.Fragment>
                     :

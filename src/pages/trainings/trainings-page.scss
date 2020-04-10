@@ -52,7 +52,7 @@
                 justify-content: center;
                 display: flex;
 
-                button {
+                a {
                     border: 0;
                     background-color: transparent;
                     padding: .4rem .975rem;
@@ -62,11 +62,12 @@
                     font-size: 0.875rem;
                     line-height: 1.1875rem;
                     color: $COLOR_GREY_TITLE;
+                    text-decoration: none;
                 }
 
                 &.active {
 
-                    button {
+                    a {
                         font-weight: bold;
                         color: $COLOR_BTN_YELLOW;
                         border-bottom: 2px solid $COLOR_BTN_YELLOW;

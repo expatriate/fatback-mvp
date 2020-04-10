@@ -7,6 +7,8 @@
     margin: 0 1rem;
     padding: 1rem 0;
 
+    border-bottom: 1px solid rgba(224, 224, 224, .5);
+
     &__number {
         font-weight: 800;
         font-size: 1.0625rem;
@@ -82,9 +84,5 @@
         font-size: .75rem;
         line-height: 1rem;
         margin: .4rem 0 0 .2rem
-    }
-
-    & + & {
-        border-top: 1px solid rgba(224, 224, 224, .5);
     }
 }

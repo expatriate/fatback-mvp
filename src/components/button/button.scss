@@ -26,10 +26,31 @@
 
     }
 
+    &.light-blue-block {
+        
+        &.filled {
+            background-color: $COLOR_LIGHT_BLUE;
+
+            &:active {
+                background-color: $COLOR_LIGHT_BLUE_ACTIVE;
+            }
+        }
+
+        &.bordered {
+            border: 1px solid $COLOR_LIGHT_BLUE;
+        }
+        
+        color: $COLOR_BTN_TEXT_DARK;
+    }
+
     &.blue-block {
 
         &.filled {
             background-color: $COLOR_BTN_BLUE;
+
+            &:active {
+                background-color: $COLOR_BTN_BLUE_ACTIVE;
+            }
         }
 
         &.bordered {
@@ -53,7 +74,7 @@
         
     }
 
-    &.blue-block, &.yellow-block, &.white-block {
+    &.blue-block, &.yellow-block, &.white-block, &.light-blue-block {
         padding: .8125rem;
         border-radius: 1.5625rem;
 

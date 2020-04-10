@@ -6,8 +6,10 @@ import { trainingsActions } from '../../actions';
 import { newsActions } from '../../actions';
 
 import TrainingsPage from '../../pages/trainings';
+import AdditionalTrainingsPage from '../../pages/additional-trainings';
 import TrainingPage from '../../pages/training';
 import NewsPage from '../../pages/news';
+import VotePage from '../../pages/vote';
 import { MenuPage } from '../../pages/menu';
 
 import menuIcon from '../../assets/svg/menu.svg';
@@ -41,7 +43,7 @@ class HomePage extends React.Component {
         if (this.props.location.pathname.indexOf('news') > 0) {
             tab = 'news'
         }
-        if (this.props.location.pathname.indexOf('trainings') > 0) {
+        if (this.props.location.pathname.indexOf('trainings') > 0 || this.props.location.pathname.indexOf('additional') > 0) {
             tab = 'trainings'
         }
 
@@ -51,6 +53,7 @@ class HomePage extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        console.log('nextProps', nextProps)
 
         if (nextProps.location.pathname !== this.props.location.pathname) {
             let tab = '';
@@ -60,7 +63,7 @@ class HomePage extends React.Component {
             if (nextProps.location.pathname.indexOf('news') > 0) {
                 tab = 'news'
             }
-            if (nextProps.location.pathname.indexOf('trainings') > 0) {
+            if (nextProps.location.pathname.indexOf('trainings') > 0 || nextProps.location.pathname.indexOf('additional') > 0) {
                 tab = 'trainings'
             }
             this.setState({
@@ -78,14 +81,16 @@ class HomePage extends React.Component {
                 <div className="content">
                     <Switch>
                         <Route path="/trainings" exact component={TrainingsPage} />
+                        <Route path="/additional" exact component={AdditionalTrainingsPage} />
                         <Route path="/news" component={NewsPage} />
                         <Route path="/menu" component={MenuPage} />
-                        <Route path="/trainings/:id" component={TrainingPage} />
+                        <Route path="/trainings/:id" exact component={TrainingPage} />
+                        <Route path="/trainings/:id/vote" exact component={VotePage} />
                     </Switch>
                 </div>
                 <div className="footer">
                     <div className="footer-tabs">
-                        <div className="footer-tabs__el">
+                        <div className={"footer-tabs__el" + (tab && tab === 'menu' ? ' active' : '')}>
                             <NavLink
                                 to="/menu"
                                 activeClassName="active">
@@ -100,7 +105,7 @@ class HomePage extends React.Component {
                                 </button>
                             </NavLink>
                         </div>
-                        <div className="footer-tabs__el">
+                        <div className={"footer-tabs__el" + (tab && tab === 'trainings' ? ' active' : '')}>
                             <NavLink
                                 to="/trainings"
                                 activeClassName="active">
@@ -115,7 +120,7 @@ class HomePage extends React.Component {
                                 </button>
                             </NavLink>
                         </div>
-                        <div className="footer-tabs__el">   
+                        <div className={"footer-tabs__el" + (tab && tab === 'news' ? ' active' : '')}> 
                             <NavLink
                                 to="/news"
                                 activeClassName="active">

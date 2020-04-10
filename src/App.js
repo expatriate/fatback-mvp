@@ -13,6 +13,7 @@ import { RestorePasswordPage } from './pages/restore-password';
 import { WelcomePage } from './pages/welcome';
 import { TestPage } from './pages/test';
 import { StartPage } from './pages/start';
+import TrainingPage from './pages/training';
 
 class App extends React.Component {
     constructor(props) {
