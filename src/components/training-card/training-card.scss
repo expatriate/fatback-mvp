@@ -14,18 +14,22 @@
         text-decoration: none;
         width: 100%;
         height: 100%;
+        display: block;
+        padding: .8125rem .8125rem .6875rem .8125rem;
     }
 
     &__image {
-        width: auto;
+        width: 100%;
         height: 9rem;
-        margin: .8125rem .8125rem .6875rem .8125rem;
+        object-fit: cover;
+        border-radius: 4px;
     }
 
     &__image-null {
-        width: auto;
+        width: 100%;
         height: 9rem;
-        margin: .8125rem .8125rem .6875rem .8125rem;
+        object-fit: cover;
+        border-radius: 4px;
         background-color: $COLOR_BLUE_DESCRIPTION;
     }
 
@@ -33,7 +37,7 @@
         color: $COLOR_BTN_BLUE;
         font-size: .75rem;
         line-height: 1rem;
-        margin-left: 1.625rem;
+        margin: .6875rem 0 0 1.625rem;
     }
 
     &__title {
@@ -41,7 +45,7 @@
         font-weight: 600;
         font-size: .875rem;
         line-height: 1.1875rem;
-        margin: .5rem .6875rem 0 .6875rem;
+        margin: .5rem 0 0 0;
     }
 
     &__description {
@@ -49,6 +53,6 @@
         font-size: .75rem;
         line-height: .875rem;
         margin-top: .5rem;
-        margin: .5rem .8125rem .8125rem .8125rem;
+        margin: .5rem 0 .8125rem 0;
     }
 }

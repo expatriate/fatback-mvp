@@ -11,7 +11,6 @@ import { RegisterPage } from './pages/register';
 import { ConfirmRegisterPage } from './pages/confirm-register';
 import { RestorePasswordPage } from './pages/restore-password';
 import { WelcomePage } from './pages/welcome';
-import { TestPage } from './pages/test';
 import { StartPage } from './pages/start';
 import TrainingPage from './pages/training';
 
@@ -39,7 +38,6 @@ class App extends React.Component {
                         <Route path="/confirm-registration" exact component={ConfirmRegisterPage} />
                         <Route path="/restore-password" exact component={RestorePasswordPage} />
                         <Route path="/welcome" exact component={WelcomePage} />
-                        <Route path="/test" exact component={TestPage} />
                         <PrivateRoute component={HomePage} />
                         <Redirect from="*" to="/login" />
                     </Switch>

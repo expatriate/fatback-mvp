@@ -10,6 +10,7 @@ export const userService = {
     logout,
     register,
     confirm,
+    getUserData,
     restorePassword,
     requestCodeReset,
     requestPasswordReset,
@@ -146,6 +147,15 @@ function restorePassword(password, password_confirmation) {
 function logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('user');
+}
+
+function getUserData() {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(`${config.apiUrl}/account/me`, requestOptions).then(handleResponse);
 }
 
 function getAll() {

@@ -14,12 +14,12 @@ class AboutPage extends React.Component {
 
     render() {
         return (
-            <div className="page coaches-page">
+            <div className="page about-page">
                 <Navigation
                     backbutton
-                    title="Меню"
+                    title=" "
                 />
-                <div className="test-page__content">
+                <div className="about-page__content">
                     <h1 className="title yellow">
                         AboutPage
                     </h1>

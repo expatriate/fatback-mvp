@@ -17,7 +17,6 @@ class AdditionalTrainingsPage extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
     }
 
     renderTrainingGroup(group) {
@@ -29,12 +28,12 @@ class AdditionalTrainingsPage extends Component {
 
         if (groupTrainings && groupTrainings.length > 0) {
             return(
-                <React.Fragment>
+                <div className="trainings-group__wrapper" key={`tg_${group.id}`}>
                     <div className="trainings-group">
                         {
                             icon && <img src={icon} className="trainings-group__icon" alt="training group image" />
                         }
-                        <div className="trainings-group__title">
+                        <div className="trainings-group__title trainings-group__title-padded">
                             { title }
                         </div>
                     </div>
@@ -45,7 +44,7 @@ class AdditionalTrainingsPage extends Component {
                             })
                         }
                     </Swiper>
-                </React.Fragment>
+                </div>
             )
         } else {
             return null
@@ -78,9 +77,7 @@ class AdditionalTrainingsPage extends Component {
                 <div className="trainings-page__content">
                     {
                         groups.data && groups.data.map(group => {
-                            return(<div key={`tg_${group.id}`}>
-                                { this.renderTrainingGroup(group) }
-                            </div>)
+                            return(this.renderTrainingGroup(group))
                         })
                     }
                 </div>

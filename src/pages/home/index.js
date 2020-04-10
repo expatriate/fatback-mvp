@@ -4,13 +4,17 @@ import { connect } from 'react-redux';
 
 import { trainingsActions } from '../../actions';
 import { newsActions } from '../../actions';
+import { userActions } from '../../actions';
 
 import TrainingsPage from '../../pages/trainings';
 import AdditionalTrainingsPage from '../../pages/additional-trainings';
 import TrainingPage from '../../pages/training';
 import NewsPage from '../../pages/news';
 import VotePage from '../../pages/vote';
-import { MenuPage } from '../../pages/menu';
+import MenuPage from '../../pages/menu';
+import { CoachesPage } from '../../pages/coaches';
+import { AboutPage } from '../../pages/about';
+import { TestPage } from '../../pages/test';
 
 import menuIcon from '../../assets/svg/menu.svg';
 import menuIcon_active from '../../assets/svg/menu_active.svg';
@@ -31,6 +35,8 @@ class HomePage extends React.Component {
 
     componentDidMount() {
 
+        this.props.getUserData();
+        this.props.getUserTrainings();
         this.props.getTrainings();
         this.props.getTrainingGroups();
         this.props.getNews();
@@ -53,8 +59,6 @@ class HomePage extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('nextProps', nextProps)
-
         if (nextProps.location.pathname !== this.props.location.pathname) {
             let tab = '';
             if (nextProps.location.pathname.indexOf('menu') > 0) {
@@ -81,11 +85,14 @@ class HomePage extends React.Component {
                 <div className="content">
                     <Switch>
                         <Route path="/trainings" exact component={TrainingsPage} />
-                        <Route path="/additional" exact component={AdditionalTrainingsPage} />
-                        <Route path="/news" component={NewsPage} />
-                        <Route path="/menu" component={MenuPage} />
                         <Route path="/trainings/:id" exact component={TrainingPage} />
                         <Route path="/trainings/:id/vote" exact component={VotePage} />
+                        <Route path="/additional" exact component={AdditionalTrainingsPage} />
+                        <Route path="/coaches" component={CoachesPage} />
+                        <Route path="/news" component={NewsPage} />
+                        <Route path="/menu" component={MenuPage} />
+                        <Route path="/tests" exact component={TestPage} />
+                        <Route path="/about" component={AboutPage} />
                     </Switch>
                 </div>
                 <div className="footer">
@@ -149,7 +156,9 @@ function mapState(state) {
 const actionCreators = {
     getTrainings: trainingsActions.getTrainings,
     getTrainingGroups: trainingsActions.getTrainingGroups,
-    getNews: newsActions.getNews
+    getUserTrainings: trainingsActions.getUserTrainings,
+    getNews: newsActions.getNews,
+    getUserData: userActions.getUserData,
 }
 
 const connectedHomePage = connect(mapState, actionCreators)(HomePage);

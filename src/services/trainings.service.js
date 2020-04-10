@@ -9,8 +9,20 @@ export const trainingsService = {
     getTrainings,
     getTrainingGroups,
     getTraining,
-    getTrainingExercises
+    getTrainingExercises,
+    getUserTrainings,
+    voteTraining
 };
+
+function getUserTrainings() {
+
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(`${config.apiUrl}/user-trainings/`, requestOptions).then(handleResponse);
+}
 
 function getTrainings() {
     
@@ -66,4 +78,23 @@ function handleResponse(response) {
 
         return data;
     });
+}
+
+function voteTraining(rating, feedback, trainingId) {
+
+    const formData = new FormData();
+    if (feedback) {
+        formData.set('feedback', feedback);
+    }
+    formData.set('rating', rating);
+    formData.set('_method', 'PUT');
+    
+    const requestOptions = {
+        method: 'POST',
+        body: formData,
+        headers: authHeader()
+    };
+
+    return fetch(`${config.apiUrl}/user-trainings/${trainingId}`, requestOptions)
+        .then(handleResponse)
 }

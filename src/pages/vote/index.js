@@ -9,22 +9,21 @@ import Button from '../../components/button';
 import voteIcon from '../../assets/svg/vote.svg';
 
 import Navigation from '../../components/navigation';
+import Loading from '../../components/loading';
+
+import { trainingsActions } from '../../actions';
 
 class VotePage extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            vote: 0
+            vote: 0,
+            text: ''
         };
     }
 
-    componentWillMount() {
-        const { id } = this.props.match.params;
-    }
-
     setVote(vote) {
-
         this.setState({
             vote: vote
         })
@@ -37,22 +36,56 @@ class VotePage extends React.Component {
         });
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.trainings.usertraining.data.length && !this.props.trainings.usertraining.data.length) {
+
+            const { id } = this.props.match.params;
+            const exists = nextProps.trainings.usertraining.data.find(el => el.id === Number(id));
+            if (exists) {
+                this.setState({
+                    voted: true
+                });
+            }
+        }
+    }
+
     handleSubmit() {
 
         const { vote, text } = this.state;
+        const { id } = this.props.match.params;
 
-        if ( vote ) {
-            console.log('TRY TO SEND VOTE', vote, text)
+        if (vote) {
+            this.props.voteTraining(vote, text, id);
             this.props.history.push(`/trainings/`);
+        }
+    }
+
+    renderVoteText(vote) {
+        switch(vote) {
+            case 1:
+                return(<span>Мне совсем не понравилось(</span>)
+            case 2:
+                return(<span>Есть классные идеи, но многое не понравилось</span>)
+            case 3:
+                return(<span>В общем хорошо, но пара моментов не понравилась</span>)
+            case 4:
+                return(<span>Отлично, но кое-что можно улучшить!</span>)
+            case 5:
+                return(<span>Все супер! Мне понравилось)</span>)
+            default:
+                return(null)
         }
     }
 
     render() {
 
         const { vote } = this.state;
+        const { voting, usertraining } = this.props.trainings;
 
         return (
             <div className="page vote-page">
+            {
+                usertraining.data.length ?
                 <div className="vote-page__content">
                     <div className="vote-page__top">
                         <div className="vote-page__block">
@@ -79,24 +112,7 @@ class VotePage extends React.Component {
                             </div>
                             <div className="vote-page__stars-descr">
                                 {
-                                    vote === 1 &&
-                                    <span>Не почувствовал! Мне не понравилось(</span>
-                                }
-                                {
-                                    vote === 2 &&
-                                    <span>Могло быть и лучше!</span>
-                                }
-                                {
-                                    vote === 3 &&
-                                    <span>Все нормально!)</span>
-                                }
-                                {
-                                    vote === 4 &&
-                                    <span>Все хорошо! Мне понравилось)</span>
-                                }
-                                {
-                                    vote === 5 &&
-                                    <span>Все супер! Мне понравилось)</span>
+                                    this.renderVoteText(vote)
                                 }
                             </div>
                         </div>
@@ -105,11 +121,15 @@ class VotePage extends React.Component {
                         <textarea
                             placeholder="Напишите Ваши пожелания по тренировкам или работе нашего сервиса!"
                             className="vote-page__textarea"
+                            value={this.state.value}
                             onChange={(data) => this.hangleChange(data)}
                         />
-                        <Button click={() => this.handleSubmit()} text="Отправить" styles={'light-blue-block big filled centered'}/>
+                        <Button click={() => this.handleSubmit()} text="Отправить" loading={voting} styles={'light-blue-block big filled centered'}/>
                     </div>
                 </div>
+                :
+                <Loading />
+            }
             </div>
         );
     }
@@ -117,13 +137,14 @@ class VotePage extends React.Component {
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
+        voteTraining: trainingsActions.voteTraining,
     }, dispatch)
 }
 
 export default connect(
     state => {
         return {
-            news: state.news,
+            trainings: state.trainings,
         };
     }, mapDispatchToProps
 )(VotePage);

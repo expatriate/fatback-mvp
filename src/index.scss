@@ -20,15 +20,19 @@
 @import 'components/news-item/news-item.scss';
 @import 'components/modal/modal.scss';
 @import 'components/four-in-row/four-in-row.scss';
+@import 'components/loading/loading.scss';
 @import 'components/counter/counter.scss';
 @import 'components/form-file/form-file.scss';
 @import 'components/training-card/training-card.scss';
+@import 'components/training-user-card/training-user-card.scss';
 @import 'components/video-block/video-block.scss';
 @import 'components/exercise-line/exercise-line.scss';
+@import 'components/daily-training/daily-training.scss';
 
 @import 'pages/start/start-page.scss';
 @import 'pages/trainings/trainings-page.scss';
 @import 'pages/news/news-page.scss';
+@import 'pages/about/about-page.scss';
 @import 'pages/menu/menu-page.scss';
 @import 'pages/home/home-page.scss';
 @import 'pages/vote/vote-page.scss';

@@ -12,18 +12,21 @@ import dumbbellIcon from '../../assets/svg/dumbbell.svg';
 
 import Button from '../../components/button';
 import Navigation from '../../components/navigation';
+import VideoBlock from '../../components/video-block';
+import Loading from '../../components/loading';
 
 class TrainingPage extends Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-        };
     }
 
     componentWillMount() {
         const { id } = this.props.match.params;
         this.props.getTraining(id);
+    }
+
+    componentDidMount() {
+        window.scrollTo(0, 0)
     }
 
     handleEnd() {
@@ -33,12 +36,13 @@ class TrainingPage extends Component {
 
     renderExercise(exercise, index) {
         const { id, title, description, work_time_in_seconds, relax_time_in_seconds, wallpaper } = exercise;
-        return(<div key={`ex_${id}`} className="exercise-line">
+        const url = 'https://stage.api.beinsport.ru/storage/';
+        return(<div key={`ex_${index}`} className="exercise-line">
                 <div className="exercise-line__number">
                     {index + 1}
                 </div>
                 <div className="exercise-line__image">
-                    <img src={wallpaper} alt="exercise image" />
+                    <img src={url + wallpaper} alt="exercise image" />
                 </div>
                 <div className="exercise-line__content">
                     <div className="exercise-line__description">
@@ -77,42 +81,41 @@ class TrainingPage extends Component {
                             title="Тренировки"
                         />
                         <div className="training-page__content-blue">
-                            <div className="video-block">
-                                <video className="video-block__video">
-                                    <source />
-                                </video>
-                                <div className="video-block__layout">
-                                    <div className="video-block__content">
-                                        <h1 className="video-block__title">
-                                            { training.data.title }
-                                        </h1>
-                                        <div className="video-block__info">
-                                            <div className="video-block__info-el">
-                                                <img src={timeIcon} alt="time" />
-                                                <span>
-                                                    <span className="bold">{ training.data.duration_in_minutes }</span> мин
-                                                </span>
-                                            </div>
-                                            <div className="video-block__info-el">
-                                                <img src={dumbbellIcon} alt="number of exercises" />
-                                                <span>
-                                                    <span className="bold">{ training.data.exercises.length }</span> упр
-                                                </span>
-                                            </div>
-                                            <div className="video-block__info-el column">
-                                                <span>
-                                                    уровень
-                                                </span>
-                                                <div className={'video-block__level video-block__level' + (training.data.level)}>
-                                                    <span></span>
-                                                    <span></span>
-                                                    <span></span>
+                            <VideoBlock
+                                source={training.data.video_link}
+                                layout={() => {
+                                    return(<div className="video-block__layout">
+                                        <div className="video-block__content">
+                                            <h1 className="video-block__title">
+                                                { training.data.title }
+                                            </h1>
+                                            <div className="video-block__info">
+                                                <div className="video-block__info-el">
+                                                    <img src={timeIcon} alt="time" />
+                                                    <span>
+                                                        <span className="bold">{ training.data.duration_in_minutes }</span> мин
+                                                    </span>
+                                                </div>
+                                                <div className="video-block__info-el">
+                                                    <img src={dumbbellIcon} alt="number of exercises" />
+                                                    <span>
+                                                        <span className="bold">{ training.data.exercises.length }</span> упр
+                                                    </span>
+                                                </div>
+                                                <div className="video-block__info-el column">
+                                                    <span>
+                                                        уровень
+                                                    </span>
+                                                    <div className={'video-block__level video-block__level' + (training.data.level)}>
+                                                        <span></span>
+                                                        <span></span>
+                                                        <span></span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
+                                    </div>)
+                                }}/>
                             <h2 className="training-page__dtitle">
                                 Описание тренировки
                             </h2>
@@ -135,9 +138,7 @@ class TrainingPage extends Component {
                         </div>
                     </React.Fragment>
                     :
-                    <div>
-                        LOADING
-                    </div>
+                    <Loading />
                 }
             </div>
         );

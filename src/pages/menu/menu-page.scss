@@ -48,6 +48,29 @@
         }
     }
 
+    &__avatar-null {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 6.25rem;
+            height: 6.25rem;
+
+            border-radius: 50%;
+            border: 2px solid $COLOR_BTN_YELLOW;
+
+            img {
+                width: 2.875rem;
+                height: 4rem;
+            }
+        }
+
+    }
+
     &__link {
 
         text-decoration: none;

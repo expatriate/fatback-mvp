@@ -17,10 +17,11 @@ class TestPage extends React.Component {
             <div className="page test-page">
                 <Navigation
                     backbutton
+                    title=" "
                     />
                 <div className="test-page__content">
                     <h1 className="title yellow">
-                        TEST PAGE
+                        TestsPage
                     </h1>
                 </div>
             </div>

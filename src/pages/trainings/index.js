@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 
 import Swiper from 'react-id-swiper';
 
-import TrainingCard from '../../components/training-card';
+import TrainingUserCard from '../../components/training-user-card';
+import DailyTraining from '../../components/daily-training';
 
 class TrainingsPage extends Component {
     constructor(props) {
@@ -16,11 +17,14 @@ class TrainingsPage extends Component {
         };
     }
 
+    componentDidMount() {
+        window.scrollTo(0, 0)
+    }
 
     render() {
 
         const { tab } = this.state;
-        const { items, groups } = this.props.trainings;
+        const { items, groups, usertraining } = this.props.trainings;
 
         return (
             <div className="page trainings-page">
@@ -45,6 +49,7 @@ class TrainingsPage extends Component {
                     <h2 className="subtitle">
                         Ваши&nbsp;тренировки&nbsp;на сегодня
                     </h2>
+                    <DailyTraining items={items.data} usertrainings={usertraining.data} groups={groups.data} />
                 </div>
             </div>
         );

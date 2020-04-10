@@ -30,6 +30,11 @@
         }
 
         margin-right: 0.75rem;
+
+        @media (orientation: landscape) {
+            width: 9.4375rem;
+            height: 9.4375rem;
+        }
     }
 
     &__description {

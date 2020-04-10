@@ -5,11 +5,13 @@ function TrainingCard(props) {
 
     const { training, className, rest } = props;
 
+    const url = 'https://stage.api.beinsport.ru/storage/';
+
     return (
         <div className={`training-card ${className}`} {...rest}>
             <Link to={`/trainings/${training.id}`}>
                 {
-                    training.wallpaper && <img className="training-card__image" src={training.wallpaper} alt="training wallpaper"/>
+                    training.wallpaper && <img className="training-card__image" src={url + training.wallpaper} alt="training wallpaper"/>
                 }
                 {
                     !training.wallpaper && <div className="training-card__image-null"></div>

@@ -4,11 +4,14 @@ const initialState = {
     items: [],
     groups: [],
     training: {},
+    usertraining: {data:[]},
     exercises: {},
     loading: false,
     groups_loading: false,
     training_loading: false,
     exercises_loading: false,
+    user_training_loading: false,
+    voting: false
 }
 
 export function trainings(state = initialState, action) {
@@ -81,7 +84,38 @@ export function trainings(state = initialState, action) {
                 exercises: {},
                 exercises_loading: false,
             }
-            
+        case trainingsConstants.GET_USER_TRAININGS_REQUEST:
+            return {
+                ...state,
+                user_training_loading: true,
+            }
+        case trainingsConstants.GET_USER_TRAININGS_SUCCESS:
+            return {
+                ...state,
+                usertraining: action.data,
+                user_training_loading: false,
+            }
+        case trainingsConstants.GET_USER_TRAININGS_FAILURE:
+            return {
+                ...state,
+                usertraining: {data: []},
+                user_training_loading: false,
+            }
+        case trainingsConstants.VOTE_TRAINING_REQUEST:
+            return {
+                ...state,
+                voting: true,
+            }
+        case trainingsConstants.VOTE_TRAINING_SUCCESS:
+            return {
+                ...state,
+                voting: false,
+            }
+        case trainingsConstants.VOTE_TRAINING_FAILURE:
+            return {
+                ...state,
+                voting: false,
+            }
         default:
             return state
     }

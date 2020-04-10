@@ -8,6 +8,7 @@ export const userActions = {
     login,
     logout,
     register,
+    getUserData,
     confirmReg,
     clearResetData,
     restorePassword,
@@ -206,4 +207,25 @@ function register(user) {
     function request(user) { return { type: userConstants.REGISTER_REQUEST, user } }
     function success(user) { return { type: userConstants.REGISTER_SUCCESS, user } }
     function failure(error) { return { type: userConstants.REGISTER_FAILURE, error } }
+}
+
+function getUserData() {
+    return dispatch => {
+        dispatch(request());
+
+        userService.getUserData()
+            .then(
+                user => { 
+                    dispatch(success(user));
+                },
+                error => {
+                    dispatch(failure(JSON.stringify(error)));
+                    dispatch(alertActions.error(JSON.stringify(error)));
+                }
+            );
+    };
+
+    function request() { return { type: userConstants.USER_DATA_REQUEST } }
+    function success(data) { return { type: userConstants.USER_DATA_SUCCESS, data } }
+    function failure(error) { return { type: userConstants.USER_DATA_FAILURE, error } }
 }

@@ -1,3 +1,117 @@
 .coaches-page {
 	
+    &__content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        flex: 1;
+        padding: 0 0 4.4375rem 0;
+    }
+
+    .title {
+        font-weight: 600;
+        font-size: 1.0625rem;
+        line-height: 1.4375rem;
+
+        color: $COLOR_GREY_TITLE;
+
+        width: 100%;
+        padding: 1.5rem 0 .4375rem 0;
+        text-align: center;
+    }
+}
+
+.coach {
+    margin-top: 1rem;
+    padding: 1.25rem 0 2.0625rem 0;
+    background-color: $COLOR_ADD_DARK_05;
+    border-radius: 1.5625rem;
+
+    display: flex;
+    flex-direction: column;
+
+    &__avatar {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        img {
+            width: 6.25rem;
+            height: 6.25rem;
+            border-radius: 50%;
+        }
+    }
+
+    &__name {
+        margin-top: 1rem;
+        font-size: 1.4375rem;
+        line-height: 1.9375rem;
+        font-weight: bold;
+        color: $COLOR_BTN_YELLOW;
+        text-align: center;
+    }
+
+    &__links {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: .9375rem;
+
+        span {
+            font-weight: bold;
+            font-size: .75rem;
+            line-height: 1rem;
+            color: $COLOR_BLUE_DESCRIPTION;
+        }
+
+        span + span {
+            margin-left: .375rem;
+        }
+    }
+
+    &__text {
+        margin-top: .9375rem;
+
+        font-weight: normal;
+        font-size: .9375rem;
+        line-height: 1.25rem;
+        color: $COLOR_GREY_TITLE;
+        padding: 0 1rem;
+        margin-bottom: 1rem;
+    }
+
+    &__slider {
+        img {
+            width: 11.125rem;
+            height: 10.4375rem;
+            padding-left: 0.6875rem;
+            object-fit: cover;
+        }
+    }
+}
+
+.coach-points {
+
+    padding: 0 1rem;
+
+    &__el {
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: .3125rem;
+
+        img {
+            width: .75rem;
+            height: .55rem;
+            margin-right: .75rem;
+        }
+
+        span {
+            font-weight: normal;
+            font-size: .9375rem;
+            line-height: 1.25rem;
+            color: $COLOR_GREY_TITLE;
+        }
+    }
 }
